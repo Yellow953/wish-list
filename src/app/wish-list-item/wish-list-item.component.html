@@ -1,0 +1,13 @@
+<li>
+  <div class="form-check">
+    <label class="form-check-label" [ngClass]="fulfilled ? 'strikeout' : ''">
+      <input
+        class="checkbox"
+        type="checkbox"
+        [checked]="fulfilled"
+        (click)="toggleFulfilled()"
+      />
+      {{ wishText }}
+    </label>
+  </div>
+</li>
