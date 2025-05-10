@@ -1,25 +1,17 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WishItem } from '../shared/models/wishItem';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
-
-const filters = [
-  (item: WishItem) => item,
-  (item: WishItem) => !item.isComplete,
-  (item: WishItem) => item.isComplete,
-];
+import { WishFilterComponent } from './wish-filter/wish-filter.component';
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    CommonModule,
-    FormsModule,
     WishListComponent,
     AddWishFormComponent,
+    WishFilterComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -31,11 +23,5 @@ export class AppComponent {
     new WishItem('Find something'),
   ];
 
-  listFilter: any = '0';
-
-  title = 'wishlist';
-
-  get visibleItems(): WishItem[] {
-    return this.items.filter(filters[this.listFilter]);
-  }
+  filter: any;
 }
