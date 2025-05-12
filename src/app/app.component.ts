@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WishItem } from '../shared/models/wishItem';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
 import { WishFilterComponent } from './wish-filter/wish-filter.component';
+import { EventService } from './../shared/services/EventService';
+import { WishService } from '../shared/services/wish.service';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +18,17 @@ import { WishFilterComponent } from './wish-filter/wish-filter.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  items: WishItem[] = [
-    new WishItem('Learn Angular'),
-    new WishItem('Get Coffee', true),
-    new WishItem('Find something'),
-  ];
+export class AppComponent implements OnInit {
+  items!: WishItem[];
+
+  constructor(events: EventService, private wishService: WishService) {
+    events.listen('removeWish', (wish: any) => {
+      let index = this.items.indexOf(wish);
+      this.items.splice(index, 1);
+    });
+  }
+
+  ngOnInit(): void {}
 
   filter: any;
 }

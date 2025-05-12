@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { EventService } from './../../shared/services/EventService';
+import { WishItem } from '../../shared/models/wishItem';
 
 @Component({
   selector: 'wish-list-item',
@@ -8,14 +10,22 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './wish-list-item.component.html',
   styleUrl: './wish-list-item.component.css',
 })
-export class WishListItemComponent {
-  @Input() wishText!: string;
+export class WishListItemComponent implements OnInit {
+  @Input() wish!: WishItem;
 
-  @Input() fulfilled!: boolean;
-  @Output() fulfilledChange = new EventEmitter<boolean>();
+  constructor(private events: EventService) {}
+
+  ngOnInit(): void {}
+
+  get cssClasses() {
+    return { 'strikeout text-muted': this.wish.isComplete };
+  }
 
   toggleFulfilled() {
-    this.fulfilled = !this.fulfilled;
-    this.fulfilledChange.emit(this.fulfilled);
+    this.wish.isComplete = !this.wish.isComplete;
+  }
+
+  removeWish() {
+    this.events.emit('removeWish', this.wish);
   }
 }
