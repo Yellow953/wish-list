@@ -28,7 +28,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.wishService.getWishes().subscribe((data: any) => {
+      this.items = data;
+    });
+  }
 
   filter: any;
 }
