@@ -1,7 +1,9 @@
-<div *ngIf="wishes.length == 0; else showItems">No Wishes Found...</div>
+<div *ngIf="wishes.length == 0; else showItems" class="alert alert-warning">
+  No Wishes Found...
+</div>
 
 <ng-template #showItems>
-  <ul class="wish-list">
+  <ul class="wish-list list-group">
     <wish-list-item *ngFor="let wish of wishes" [wish]="wish"></wish-list-item>
   </ul>
 </ng-template>
