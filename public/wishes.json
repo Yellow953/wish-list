@@ -1,18 +1,18 @@
 [
   {
     "wishText": "learn angular",
-    "isCompleted": false
+    "isComplete": false
   },
   {
     "wishText": "drink coffee",
-    "isCompleted": true
+    "isComplete": true
   },
   {
     "wishText": "something else",
-    "isCompleted": false
+    "isComplete": false
   },
   {
     "wishText": "test",
-    "isCompleted": false
+    "isComplete": false
   }
 ]
