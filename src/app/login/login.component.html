@@ -6,7 +6,9 @@
           <h4 class="mb-4 text-center">Login</h4>
 
           <form (ngSubmit)="submit()">
-            <div *ngIf="error">{{ error }}</div>
+            <div *ngIf="error" class="alert alert-danger">
+              {{ error }}
+            </div>
 
             <div class="mb-3">
               <label for="email" class="form-label">Email address</label>
