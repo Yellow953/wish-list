@@ -12,4 +12,6 @@ import { WishListItemComponent } from '../wish-list-item/wish-list-item.componen
 })
 export class WishListComponent {
   @Input() wishes: WishItem[] = [];
+
+  constructor() {}
 }
