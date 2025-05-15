@@ -7,7 +7,7 @@ import { WishItem } from '../models/wishItem';
   providedIn: 'root',
 })
 export class WishService {
-  private apiUrl = 'http://localhost:8000/api/wishlist';
+  private apiUrl = 'http://3.28.183.184/public/api/wishlist';
 
   constructor(private http: HttpClient) {}
 

@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8000/api';
+  private baseUrl = 'http://3.28.183.184/public/api';
   private user = new BehaviorSubject<any>(null);
 
   constructor(private http: HttpClient) {}
@@ -54,7 +54,7 @@ export class AuthService {
   }
 
   getCsrfToken() {
-    return this.http.get(`http://localhost:8000/sanctum/csrf-cookie`, {
+    return this.http.get(`http://3.28.183.184/public/sanctum/csrf-cookie`, {
       withCredentials: true,
     });
   }
